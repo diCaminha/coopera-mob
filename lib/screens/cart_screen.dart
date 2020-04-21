@@ -16,63 +16,62 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Seu Carrinho de Compras'),
       ),
-      body: ChangeNotifierProvider.value(
-        value: OrdersProvider(),
-        child: Column(
-          children: <Widget>[
-            Card(
-              margin: EdgeInsets.all(15),
-              child: Padding(
-                padding: EdgeInsets.all(8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          Text('Total: '),
-                          SizedBox(width: 10),
-                          Chip(
-                            label: Text(
-                              'R\$${cartProvider.totalAmount}',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            backgroundColor: Theme.of(context).accentColor,
+      body: Column(
+        children: <Widget>[
+          Card(
+            margin: EdgeInsets.all(15),
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text('Total: '),
+                        SizedBox(width: 10),
+                        Chip(
+                          label: Text(
+                            'R\$${cartProvider.totalAmount}',
+                            style: TextStyle(color: Colors.white),
                           ),
-                        ],
-                      ),
+                          backgroundColor: Theme.of(context).accentColor,
+                        ),
+                      ],
                     ),
-                    FlatButton(
-                        onPressed: () {
-                          ordersProvider.createOrder(
-                              cartProvider.totalAmount, new DateTime.now());
-                          Navigator.of(context).pushNamed('/orders');
-                        },
-                        child: Text(
-                          'Enviar Pedido',
-                          style:
-                              TextStyle(color: Theme.of(context).primaryColor),
-                        ))
-                  ],
-                ),
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        ordersProvider.createOrder(
+                          cartProvider.totalAmount,
+                          new DateTime.now(),
+                        );
+                        cartProvider.clear();
+                        Navigator.of(context).pushNamed('/orders');
+                      },
+                      child: Text(
+                        'Enviar Pedido',
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      ))
+                ],
               ),
             ),
-            SizedBox(
-              height: 10,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+              child: ListView.builder(
+            itemCount: cartProvider.items.length,
+            itemBuilder: (ctx, i) => ci.CartItem(
+              id: cartProvider.items.values.toList()[i].id,
+              productId: cartProvider.items.keys.toList()[i],
+              price: cartProvider.items.values.toList()[i].price,
+              quantity: cartProvider.items.values.toList()[i].quantity,
+              title: cartProvider.items.values.toList()[i].title,
             ),
-            Expanded(
-                child: ListView.builder(
-              itemCount: cartProvider.items.length,
-              itemBuilder: (ctx, i) => ci.CartItem(
-                id: cartProvider.items.values.toList()[i].id,
-                productId: cartProvider.items.keys.toList()[i],
-                price: cartProvider.items.values.toList()[i].price,
-                quantity: cartProvider.items.values.toList()[i].quantity,
-                title: cartProvider.items.values.toList()[i].title,
-              ),
-            ))
-          ],
-        ),
+          ))
+        ],
       ),
     );
   }

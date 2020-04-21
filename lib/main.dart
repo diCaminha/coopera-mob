@@ -1,4 +1,5 @@
 import 'package:cooperamob/providers/cart_provider.dart';
+import 'package:cooperamob/providers/orders_provider.dart';
 import 'package:cooperamob/providers/products_provider.dart';
 import 'package:cooperamob/screens/cart_screen.dart';
 import 'package:cooperamob/screens/orders_screen.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: CartProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: OrdersProvider(),
+        )
       ],
       child: MaterialApp(
         title: 'Coopera Art',
