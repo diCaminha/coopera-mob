@@ -1,5 +1,8 @@
+import 'package:cooperamob/providers/cart_provider.dart';
+import 'package:cooperamob/widgets/badge.dart';
 import 'package:cooperamob/widgets/products_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 enum FilterChoice { TODOS, FAVORITOS }
 
@@ -13,6 +16,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Produtos'),
@@ -35,9 +39,14 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                         value: FilterChoice.FAVORITOS,
                         child: Text('favoritos')),
                   ]),
-          PopupMenuButton(
-            icon: Icon(Icons.shopping_cart),
-            )
+          Badge(
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/cart");
+                },
+              ),
+              value:cartProvider.getQntItems())
         ],
       ),
       body: ProductsGrid(showFavorites),
