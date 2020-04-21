@@ -22,11 +22,7 @@ class CartItem extends StatelessWidget {
       key: ValueKey(id),
       background: Container(
         color: Theme.of(context).errorColor,
-        child: Icon(
-          Icons.delete,
-          color: Colors.white,
-          size: 40
-        ),
+        child: Icon(Icons.delete, color: Colors.white, size: 40),
         alignment: Alignment.centerRight,
         padding: EdgeInsets.only(right: 20),
       ),
