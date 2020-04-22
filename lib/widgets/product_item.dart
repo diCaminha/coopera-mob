@@ -45,6 +45,7 @@ class ProductItem extends StatelessWidget {
                     content: Text('produto adicionado ao carrinho'),
                     action: SnackBarAction(label: 'DESFAZER', onPressed: (){}),
                     duration: Duration(seconds: 2),
+                    backgroundColor: Theme.of(context).primaryColor,
 
                   ));
                 }),
