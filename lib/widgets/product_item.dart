@@ -13,7 +13,8 @@ class ProductItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed("/product-detail", arguments: product.id);
+          Navigator.of(context)
+              .pushNamed("/product-detail", arguments: product.id);
         },
         child: GridTile(
           child: Image.network(
@@ -38,7 +39,14 @@ class ProductItem extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 icon: Icon(Icons.shopping_cart),
                 onPressed: () {
-                  cartProvider.addItems(product.id, product.price, product.title);
+                  cartProvider.addItems(
+                      product.id, product.price, product.title);
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text('produto adicionado ao carrinho'),
+                    action: SnackBarAction(label: 'DESFAZER', onPressed: (){}),
+                    duration: Duration(seconds: 2),
+
+                  ));
                 }),
           ),
         ),
