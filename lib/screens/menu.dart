@@ -17,11 +17,20 @@ class Menu extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.money_off),
             title: Text('Pedidos'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed('/orders');
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.assignment),
+            title: Text('Gerenciar Produtos'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed('/userProducts');
             },
           ),
         ],

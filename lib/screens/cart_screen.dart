@@ -51,7 +51,7 @@ class CartScreen extends StatelessWidget {
                       },
                       child: Text(
                         'Enviar Pedido',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
+                        style: TextStyle(color: Colors.green),
                       ))
                 ],
               ),
