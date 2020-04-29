@@ -1,4 +1,5 @@
 import 'package:cooperamob/providers/orders_provider.dart';
+import 'package:cooperamob/screens/menu.dart';
 import 'package:cooperamob/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Seus Pedidos'),
       ),
+      drawer: Menu(),
       body: ListView.builder(
         itemCount: orders.length,
         itemBuilder: (ctx, i) => OrderItem(

@@ -1,4 +1,5 @@
 import 'package:cooperamob/providers/cart_provider.dart';
+import 'package:cooperamob/screens/menu.dart';
 import 'package:cooperamob/widgets/badge.dart';
 import 'package:cooperamob/widgets/products_grid.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               },
               itemBuilder: (_) => [
                     PopupMenuItem(
-                        value: FilterChoice.TODOS, child: Text('todos')),
+                        value: FilterChoice.TODOS, 
+                        child: Text('todos')),
                     PopupMenuItem(
                         value: FilterChoice.FAVORITOS,
                         child: Text('favoritos')),
@@ -46,9 +48,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   Navigator.of(context).pushNamed("/cart");
                 },
               ),
-              value:cartProvider.getQntItems())
+              value: cartProvider.getQntItems())
         ],
       ),
+      drawer: Menu(),
       body: ProductsGrid(showFavorites),
     );
   }
