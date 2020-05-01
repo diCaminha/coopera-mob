@@ -2,6 +2,7 @@ import 'package:cooperamob/providers/cart_provider.dart';
 import 'package:cooperamob/providers/orders_provider.dart';
 import 'package:cooperamob/providers/products_provider.dart';
 import 'package:cooperamob/screens/cart_screen.dart';
+import 'package:cooperamob/screens/edit_product_screen.dart';
 import 'package:cooperamob/screens/orders_screen.dart';
 import 'package:cooperamob/screens/product_detail_screen.dart';
 import 'package:cooperamob/screens/products_overview_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           CartScreen.routeName: (ctx) => CartScreen(),
           OrdersScreen.routeName: (ctx) => OrdersScreen(),
           UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
+          EditProductScreen.routeName: (ctx) => EditProductScreen(),
         },
       ),
     );

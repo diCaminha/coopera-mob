@@ -18,10 +18,19 @@ class UserProductItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.edit, color: Theme.of(context).indicatorColor,),
+              icon: Icon(
+                Icons.edit,
+                color: Theme.of(context).indicatorColor,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/edit-product');
+              },
             ),
             IconButton(
-              icon: Icon(Icons.delete, color: Theme.of(context).errorColor,),
+              icon: Icon(
+                Icons.delete,
+                color: Theme.of(context).errorColor,
+              ),
             ),
           ],
         ),
